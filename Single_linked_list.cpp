@@ -1,109 +1,108 @@
 #include<iostream>
-#include<iomanip>
-using namespace std ;
+using namespace std ; 
 
-class node {
-;
+
+class node
+{
 public:
-    node* next ;
-    int info;
-public:
+
+    int data ; 
+    node * next ;         
+
     node()
     {
-        this->next = NULL ;
+        this->data = 0 ; 
+        this->next = nullptr ; 
     }
-    node(int val )
+    node(int n)
     {
-        this->next = nullptr ;
-        this-> info = val ;
+        this->data = n ; 
+        this->next = nullptr ; 
+    }
+    ~node()
+    {
+        delete next ;
     }
 };
 
 class sll
-        /* sll stand for single linked list */
 {
-
-    node* head;
-    node* temp ;
-    node* temp1 ;
+private:
+    node *head , *temp1 , *temp2 ;
 public:
-    sll()
-    {
-        this->head = NULL ;
-    }
-    void insert_node() ;
-    void print_list() ;
-    void set_head() ;
-    void delete_list() ;
-
-
+    sll() ; 
+    ~sll();
+    void set_sll_head() ; 
+    void print_sll() ; 
+    void insert_end(); 
 };
-void sll::insert_node() /* position and data of the new node   */
+sll::sll()
 {
-    int key ;
-    temp = new node () ;
-    temp = head ;
+    head = NULL ; 
+    temp1 = NULL ; 
+    temp2 = NULL ; 
+}
+
+sll::~sll()
+{
+    delete head , temp1 , temp2  ; 
+}
+
+void sll::insert_end()
+{
+    temp1 = head ; 
+    if(head==nullptr)
+    {
+        cout<<"Head is not set "<<endl ; 
+        set_sll_head() ; 
+        return ; 
+
+    }
+    
+    while(temp1 != nullptr)
+    {
+        if(temp1->next == nullptr )
+        {
+           
+            cout<<"Enter the value you want to store in the node"<<endl ;
+            cin>>temp1->next->data ; 
+            temp1->next->next = nullptr ;  
+        }
+        temp1 = temp1->next ; 
+    }
+}
+
+void sll::set_sll_head()
+{
     if (head == nullptr)
     {
-        cout<<"Enter the value you want  to store in head node "<<endl ;
-        cin>>head->info;
-        return;
+        head = new node ; 
+        cout<<"Enter the value you want to store in head : "<<endl ; 
+        cin>>head->data ; 
+        head->next = nullptr ; 
+        return ; 
     }
-    cout<<"Enter key:"<<endl;
-    cin>>key  ;
-
-    while(temp != nullptr)
-    {
-        if(temp->info == key)
-        {
-            temp1 = new node ;
-            cout<<"Enter the info for the new node "<<endl ;
-            cin>>temp1->info ;
-            temp1->next = temp->next ;
-            temp->next = temp1 ;
-        }
-        temp = temp->next ;
-    }
-
-
+   
 }
-void sll::print_list()
+
+void sll::print_sll()
 {
-    temp = head ;
-    if(head == nullptr )
+    temp1 = head ; 
+    while(temp1 != nullptr)
     {
-        cout<<"Shit! The list is empty"<<endl ;
-        return ;
+        cout<<(temp1->data)<<endl ; 
+        temp1 = temp1->next ; 
     }
-    while(temp!= nullptr)
-    {
-        cout<<setw(4)<<temp->info<<" " ;
-        temp = temp->next ;
-    }
+
 }
 
-void sll::set_head()
-{
-    if(head == nullptr)
-    {
-        cout<<"Enter the value you want to store in the head "<<endl ;
-        cin>>head->info ;
-//        return ;
-    }
-    cout<<"The head already has a value of "<<head->info<<endl ;
-}
 
 int main()
 {
-    cout<<"Start of the program "<<endl ;
-    sll s1 ;
-    s1.set_head();
-    s1.insert_node();
-    s1.insert_node();
-    s1.insert_node();
-    s1.insert_node();
-    s1.print_list() ; 
+    sll s1 ; 
+    s1.set_sll_head() ; 
+    s1.insert_end();
+    s1.print_sll() ; 
 
-
-    return 0;
+    return 0 ; 
 }
