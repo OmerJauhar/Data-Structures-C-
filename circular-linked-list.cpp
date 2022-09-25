@@ -47,7 +47,7 @@ public:
         }
         else
         {
-            while(temp->next != head)
+            while(temp != head)
             {
                 temp = temp->next ; 
             }
@@ -82,14 +82,15 @@ public:
 
     void insert_At_head(int val)
     {
+        temp1 = new node(val) ; 
         if (head == nullptr)   
         {
-            cout<<"Circular linked list not set "<<endl ; 
-            // return ; 
+            head = temp1 ; 
+            // head->next = head ; 
         }
         else
         {
-            temp1 = new node(val) ; 
+            
             temp = head ; 
             while(temp->next!=head)
             {
@@ -128,9 +129,10 @@ public:
 int main()
 {
     cll c1 ; 
-    // c1.insert(10);
-    // c1.insert(20);
-    // c1.insert(30);
+    c1.insert_At_head(40) ; 
+    c1.insert_At_head(40) ; 
+    c1.insert_At_head(40) ; 
+    c1.insert_At_head(40) ; 
     c1.insert_At_head(40) ; 
 
     c1.display() ;
