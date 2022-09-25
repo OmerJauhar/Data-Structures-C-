@@ -2,6 +2,8 @@
 #include<regex>
 #include<cstring>
 using namespace std ; 
+
+/*A function to check whether domain is valid */
 bool isValidDomain(string str)
 {
   const regex pattern("^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$");
@@ -29,8 +31,9 @@ int main()
 
     regex upper_case_expression{ "[A-Z]+" };
     regex number_expression{ "[0-9]+" };
-    regex special_char_expression{ "[@!?]+"};
-    regex alphabet{"/^[A-Za-z]+$/"} ; 
+    regex special_char_expression{ "[[$&+,:;=?@#|'<>.-^*()%!]"};
+    regex meow{"[A-Za-z0-9]"} ; /*regex expression for not special characters*/
+    regex alphabet{"[A-Za-z]"} ; 
 
     upper_case = regex_search(password, upper_case_expression); 
     number_case = regex_search(password, number_expression);
@@ -65,12 +68,9 @@ int main()
     ptr1 = ptr ; 
 
     ptr = strtok(nullptr,"@");
-    
-    cout<<ptr1[0]<<endl ; 
+     
     
     int length = strlen(ptr1) ; 
-
-    cout<<ptr1[length -1]<<endl ; 
 
     bool c1 = false , c2 = false ; 
 
@@ -78,23 +78,23 @@ int main()
     str1.append(1,ptr1[0]);
     str2.append(1,ptr1[length-1]);
     c1 = regex_search(str1, alphabet); 
-    c2 = regex_search(str2,special_char_expression) ; 
+    c2 = regex_search(str2,meow) ; 
 
     int three_SC ; 
-    
     bool consective_SC_check = true ; 
     bool three_SC_check = false ; 
 
     for (int i = 0; i < length; i++)
     {
-        string meow ; 
-        meow.append(1,ptr1[i]) ;
-        cout<<meow<<endl ; 
-        if(regex_search(meow,special_char_expression))
+        string meow1 ; 
+        meow1.append(1,ptr1[i]) ;
+        // cout<<meow1<<endl ; 
+        if(!regex_search(meow1,meow))
         {
             three_SC ++ ; 
         }
     }
+    /**/; 
     
     if(three_SC<=3)
     {
@@ -104,17 +104,22 @@ int main()
     for (int i = 0; i < length; i++)
     {
         string meow1 ;
-        if(regex_search(meow1.append(1,ptr1[i]),special_char_expression) && regex_search(meow1.append(1,ptr1[i+1]),special_char_expression))
+        if (i!=length-1)
         {
-            consective_SC_check = false ; 
+            if(regex_search(meow1.append(1,ptr1[i]),meow) && regex_search(meow1.append(1,ptr1[i+1]),meow))
+            {
+                consective_SC_check = false ; 
+            }
+            else
+            {
+                consective_SC_check = true ; 
+            }
         }
-
+        
     }
-    
+    // cout<<consective_SC_check<<endl;
 
-    
-
-    if(isValidDomain(ptr) == true && c1 == true && c2 ==false && consective_SC_check == true && three_SC == true )
+    if(isValidDomain(ptr) == true && c1 == true && c2 ==true && consective_SC_check == false && three_SC_check == true )
     {
         cout<<"Valid Email"<<endl ; 
     }
