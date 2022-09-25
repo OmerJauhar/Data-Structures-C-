@@ -4,66 +4,60 @@ using namespace std ;
 class array
 {
 private:
-    int size ; 
-    int max ;  
-    int *array_holder ; 
-
+    int length ; 
+    int max ; 
+    int *arrayholder ; 
 public:
     array()
     {
-        this->size = 0  ;
-        this->max = 0 ; 
-        // this->array_holder = new int[5] ; /*by default it will create an array of length 5*/  
-
-
+        // by default the array size will be 100 
+        arrayholder = new int[100] ; 
+        length = 100 ; 
+        max = 0 ; 
+        
     }
-    array(int n, int a , int b)
+    array(int n)
     {
-        this->size = 0 ; 
-        this->max = n ; 
- 
-        this->array_holder = new int[n] ; 
-    }
-
-    ~array()
-    {
-        delete [] array_holder ; 
+        arrayholder = new int[n] ; 
+        length = n ; 
+        max = n ; 
     }
     
-    void set_array()
+    ~array()
     {
-        for (int i = 0; i < size; i++)
+        delete [] arrayholder ; 
+    }
+
+    void add(int n)
+    {
+        for (int i = 0; i < n+1; i++)
         {
-            cout<<"Enter Value for "<< i+1 <<" :"<<endl ; 
-            cin>>(array_holder[i]) ; 
+            
+            cout<<"Enter the number "<<endl ; 
+            cin>>*(arrayholder + i ) ; 
+            max ++ ; 
+        
+        }
+        
+    }
+    void remove(int n)
+    {
+        for (int i = 0; i < length; i++)
+        {
+            if (*(array_holder) == n)
+            {
+                for (int j = i; j < length -1 ; j++)
+                {
+                    arrayholder[j] = arrayholder[j]; 
+                }
+                
+            }
+            
         }
         
     }
 
-    // void append()
-    // {
-
-    // }
-
-    int size_()
-    {
-        return this->size ; 
-    }
-
-    void print()
-    {
-        cout<<"ARRAYS: "<<endl ; 
-        for (int i = 0; i < this->size; i++)
-        {
-            cout<<(array_holder[i]) ; 
-
-        }
-         
-    }    
-
-
-
-} ; 
+};
 
 int main()
 {
