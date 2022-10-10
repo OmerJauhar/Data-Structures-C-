@@ -55,6 +55,29 @@ public:
             temp1->next = head ; 
         }
     }
+    void remove(int key)
+    {
+        if(head == nullptr)
+        {
+            cout<<"The linked list is empty "<<endl ; 
+        }
+        else
+        {
+            temp = head ; 
+            while(temp->next !=head)
+            {
+                if(temp->next->info == key)
+                {
+                    temp1 = temp->next ; 
+                    temp->next = temp1->next ; 
+                    delete temp1 ; 
+
+                }
+                temp = temp->next
+            }
+        }
+
+    }
 
     void insert_at_key(int val , int key)
     {

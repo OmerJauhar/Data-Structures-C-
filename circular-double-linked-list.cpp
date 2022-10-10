@@ -56,12 +56,13 @@ public:
             return ; 
         }
         
-        while(temp!=head)
+        while(temp->next !=head)
         {
             temp = temp->next ; 
         } 
-        temp1->next=head;
         temp1->prev=temp;
+        temp1->next=head;
+        
         temp->next=temp1;
         head->prev = temp1 ;
 

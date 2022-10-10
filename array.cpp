@@ -1,65 +1,73 @@
 #include<iostream>
+
 using namespace std ; 
 
-class array
+class queue
 {
 private:
     int length ; 
-    int max ; 
-    int *arrayholder ; 
+    int start ; 
+    int end ; 
+    int *array_holder ; 
 public:
-    array()
+    queue()
     {
-        // by default the array size will be 100 
-        arrayholder = new int[100] ; 
-        length = 100 ; 
-        max = 0 ; 
-        
+        // by default the length will be 100
+        length= 100 ; 
+        array_holder = new int[length] ; 
+        start = end = -1 ;
     }
-    array(int n)
+    queue(int n)
     {
-        arrayholder = new int[n] ; 
         length = n ; 
-        max = n ; 
-    }
-    
-    ~array()
-    {
-        delete [] arrayholder ; 
+        array_holder = new int[n] ; 
+        start = end = -1 ; 
     }
 
-    void add(int n)
+    void enqueue(int n)
     {
-        for (int i = 0; i < n+1; i++)
+        if(end = length -1 )
         {
-            
-            cout<<"Enter the number "<<endl ; 
-            cin>>*(arrayholder + i ) ; 
-            max ++ ; 
-        
+            cout<<"Queue overflowed"<<endl ; 
         }
-        
-    }
-    void remove(int n)
-    {
-        for (int i = 0; i < length; i++)
+        else
         {
-            if (*(array_holder) == n)
+            if (start == -1)
             {
-                for (int j = i; j < length -1 ; j++)
-                {
-                    arrayholder[j] = arrayholder[j]; 
-                }
-                
+                start  = 0 ; 
             }
-            
+            end++ ; 
+            *(array_holder + end) = n ; 
+            length ++ ; 
         }
-        
+    }
+
+    void dequeue()
+    {
+        if(start == -1 && end == -1)
+        {
+            cout<<"Queue is empty"<<endl ; 
+        }
+        else
+        {
+            if(start == end)
+            {
+                start = end = -1 ; 
+            }
+            start++ ; 
+            length -- ; 
+        }
+    }
+
+    ~queue()
+    {
+        delete [] array_holder ; 
     }
 
 };
 
 int main()
 {
+
     return 0 ; 
 }
