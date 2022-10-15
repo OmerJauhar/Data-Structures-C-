@@ -43,6 +43,65 @@ public:
         inorder_print(root->right) ; 
         return ;
     }
+
+    node* pre_order_successor(node* temp )
+    {
+        node* curr = temp ; 
+        while (curr && curr->left != nullptr)
+        {
+            curr = curr->left ; 
+        }
+        return curr ;
+        
+    }
+    node* delete_node(node* root , int value)
+    {
+        if(root == nullptr)
+        {
+            return root ; 
+        }
+        if (value < root->info ) 
+        {
+            root->left = delete_node(root->left , value) ; 
+        }
+        else if(value > root->info )
+        {
+            root->right = delete_node(root->right , value) ; 
+        }
+        else
+        {
+            if (root->right == nullptr && root->left == nullptr)
+            {
+                return nullptr ; 
+            }
+            else if (root->right == nullptr)
+            {
+                node* temp  = root->left ; 
+                free(root) ; 
+                return temp ; 
+            }
+            else if (root->left = nullptr)
+            {
+                node* temp = root->right ; 
+                free(root) ; 
+                return temp ; 
+            }
+            else
+            {
+                node* meow = pre_order_successor(root->right) ; 
+                root->info = temp->info ; 
+
+                root->right = delete_node(root->right , temp->info ) ; 
+            }
+            
+            
+            
+        }
+        return root ; 
+        
+        
+        
+    }
     node* insert(node* root,int value)
     {
         if (root == nullptr )
@@ -62,6 +121,7 @@ public:
     }
 };
 
+
 int main()
 {
     bst b1 ; 
@@ -72,6 +132,9 @@ int main()
     b1.insert(root , 50) ; 
     b1.insert(root , 05) ;
     b1.insert(root , 07) ;  
+    b1.inorder_print(root) ; 
+    cout<<"meow"<<endl ; 
+    b1.delete_node(root,50) ; 
     b1.inorder_print(root) ; 
     return 0 ; 
 }
