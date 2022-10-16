@@ -44,7 +44,7 @@ public:
         return ;
     }
 
-    node* pre_order_successor(node* temp )
+    node* in_order_successor(node* temp )
     {
         node* curr = temp ; 
         while (curr && curr->left != nullptr)
@@ -54,6 +54,33 @@ public:
         return curr ;
         
     }
+    int min_number(node* root)
+    {
+        if (root != nullptr)
+        {
+            while(root && root->left != nullptr)
+            {
+                root = root->left ; 
+            }
+
+        }
+        return root->info ; 
+        
+    }
+    int max_number(node* root)
+    {
+        if (root != nullptr)
+        {
+            while (root && root->right != nullptr)
+            {
+                root = root->right ; 
+            }
+            
+        }
+        return root->info ; 
+        
+    }
+
     node* delete_node(node* root , int value)
     {
         if(root == nullptr)
@@ -88,7 +115,7 @@ public:
             }
             else
             {
-                node* meow = pre_order_successor(root->right) ; 
+                node* meow = in_order_successor(root->right) ; 
                 root->info = temp->info ; 
 
                 root->right = delete_node(root->right , temp->info ) ; 
@@ -136,5 +163,7 @@ int main()
     cout<<"meow"<<endl ; 
     b1.delete_node(root,50) ; 
     b1.inorder_print(root) ; 
+    cout<<"Min value "<<b1.min_number(root)<<endl ;
+    cout<<"Max Value "<<b1.max_number(root)<<endl ;  
     return 0 ; 
 }
