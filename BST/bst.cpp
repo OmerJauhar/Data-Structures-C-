@@ -82,7 +82,52 @@ public:
     void PostOrderTraversal(){
         PostOrderTraversal( this->root);
 	}
+    node* buildtree (int preorder[], int inorder[] , int start , int end) ; 
+    int search(int inorder[], int start , int end , int curr) ; 
+    {
+        for (int i = start; i <= end; i++)
+        {
+            if (inorder[i] == curr)
+            {
+                return i ; 
+            }
+            
+        }
+        
+    }
 };
+int  search(int inorder[], int start , int end , int curr)
+    {
+        for (int i = start; i <= end; i++)
+        {
+            if (inorder[i] == curr)
+            {
+                return i ; 
+            }
+            
+        }
+        
+    }
+node* buildtree (int preorder[], int inorder[] , int start , int end) 
+{
+    static int idx = 0 ; 
+    if (start>end)
+    {
+        return nullptr ; 
+    }
+    
+    int curr = preorder[idx] ; 
+    idx++ ; 
+    node* node = new node(curr) ; 
+    if (start==end)
+    {
+        return node ; 
+    }
+    
+    int pos = search(inorder,start , end, curr) ; 
+    node->left = buildtree(preorder, inorder , start , pos-1) ; 
+    node->right = buildtree(preorder, inorder , pos+1 , end ); 
+}
 int BinarySearchTree::max_deapth(node* temp)
 {
     if (temp==nullptr)
