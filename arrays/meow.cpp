@@ -1,15 +1,17 @@
 #include<iostream>
 using namespace std ; 
-void fun(int *&array)
+int * fun(int *array)
 {
-    cout<<*(array) ; 
+    cout<<*(array) ;
+    return array ;  
 }
 
 int main()
 {
     int* array = new int[21] ; 
     *(array + 0) = 94 ;
-    fun(array) ; 
+    int * array1 = fun(array) ;
+     
 
     return 0; 
 }

@@ -67,6 +67,25 @@ class MaxHeap{
 			swap(arr[index], arr[maxIndex]);
 			shiftDown(maxIndex);
 		}
+
+		void inorder_traversal(int a)
+		{
+			int li = (a*2) + 1 ; 
+			int ri = (a*2) + 2 ; 
+			cout<<this->arr[a].key <<" "; 
+			if (li <this->totalItems)
+			{
+				inorder_traversal(li) ; 
+			}
+			
+			if (ri<this->totalItems)
+			{
+				inorder_traversal(ri) ; 
+			}
+			
+
+			
+		}
 	public:
 		
 		MaxHeap(){
@@ -80,6 +99,10 @@ class MaxHeap{
 			this->arr = new node[_capacity];
 			this->capacity = _capacity;
 			this->totalItems = 0;
+		}
+		void INORDERTRAVERSAL()
+		{
+			inorder_traversal(0) ; 
 		}
 		
 		void insert(int key){
@@ -121,19 +144,41 @@ class MaxHeap{
 };
 
 int main(){
-	MaxHeap heap;
-	for(int i = 1; i <= 200; i++){
-		heap.insert(i);
-	}
-	heap.deleteAll();
+	// MaxHeap heap;
+	// for(int i = 1; i <= 200; i++){
+	// 	heap.insert(i);
+	// }
+	// heap.deleteAll();
 	
-	for(int i = 201; i <= 300; i++)
-		heap.insert(i);
-	heap.deleteMax();
-	while(!heap.isEmpty()){
-		int s;
-		heap.getMax(s);
-		cout << s << endl;
-		heap.deleteMax();
+	// for(int i = 201; i <= 300; i++)
+	// 	heap.insert(i);
+	// heap.deleteMax();
+	// while(!heap.isEmpty()){
+	// 	int s;
+	// 	heap.getMax(s);
+	// 	cout << s << endl;
+	// 	heap.deleteMax();
+	// }
+	MaxHeap h1 ; 
+	for (int i = 0; i < 16; i+=2)
+	{
+		h1.insert(i) ; 
 	}
+	
+
+	h1.INORDERTRAVERSAL() ; 
+	cout<<"\n"<<endl ; 
+
+
+	while (!h1.isEmpty())
+	{
+		int s ; 
+		h1.getMax(s) ; 
+		cout<<s<<endl;
+		h1.deleteMax() ;  
+	}
+
+	
+	
+
 }

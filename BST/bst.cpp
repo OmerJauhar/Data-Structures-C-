@@ -1,5 +1,8 @@
 // Binary Search Tree Implementation..  
 #include<iostream>
+
+int* arry = new int[100] ; 
+int meow = 0 ; 
 using namespace std;
     class node {
     public:
@@ -19,9 +22,9 @@ class BinarySearchTree{
     node* root;
     node* Insert( node* root, int val);
     node* Delete(node* root,int data);
-    node* InOrderTraversal( node* root);
-    node* PreOrderTraversal( node* root);
-    node* PostOrderTraversal( node* root);
+    void InOrderTraversal( node* root);
+    void PreOrderTraversal( node* root);
+    void PostOrderTraversal( node* root);
     node* FindMax(node* root);
     public:
     BinarySearchTree(){
@@ -63,6 +66,13 @@ int main (){
     cout<<"\n-----------------------"<<endl;
     cout<<"Post Order Print (left--Right--Root)"<<endl;
     tree1.PostOrderTraversal();
+
+    for (int i = 0; i < meow; i++)
+    {
+        cout<<*(arry + meow) ; 
+
+    }
+    
     return 0;
 }
 node* BinarySearchTree::Insert(node* r, int val ){
@@ -125,13 +135,15 @@ node * BinarySearchTree::Delete(node* r, int data)
     }
     return r;
 }
-node * BinarySearchTree::InOrderTraversal( node* r){
+void BinarySearchTree::InOrderTraversal( node* r){ 
      if (r == NULL)
-        return NULL;
+        return ;
     //first recur on left child
     InOrderTraversal(r->left);
+    cout<<r->data<<"->" ; 
    //then print the data of node
-    cout << " "<< r->data << " -> ";
+   *(arry + meow) = r->data;
+    meow ++ ; 
   // now recur on right child
     InOrderTraversal(r->right);
 }
@@ -142,17 +154,17 @@ node* BinarySearchTree::FindMax(node* r){
     }
     return r;    
 }
-node* BinarySearchTree::PreOrderTraversal( node* r){
+void BinarySearchTree::PreOrderTraversal( node* r){
      if (r == NULL)
-        return NULL;
+        return ;
    
     cout << " "<< r->data << " -> ";
     PreOrderTraversal(r->left);
     PreOrderTraversal(r->right);    
 }
-node* BinarySearchTree::PostOrderTraversal( node* r){
+void BinarySearchTree::PostOrderTraversal( node* r){
      if (r == NULL)
-        return NULL;
+        return ;
     PostOrderTraversal(r->left);
     PostOrderTraversal(r->right);    
     cout << " "<< r->data << " -> ";
