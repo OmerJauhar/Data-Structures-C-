@@ -27,7 +27,7 @@ private:
             newarr[i] = this->arr[i] ; 
         }
         delete this->arr ; 
-        this->capacity - newcapacity ; 
+        this->capacity = newcapacity ; 
         this->arr = newarr ; 
     }
 

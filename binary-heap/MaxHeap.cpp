@@ -82,9 +82,6 @@ class MaxHeap{
 			{
 				inorder_traversal(ri) ; 
 			}
-			
-
-			
 		}
 	public:
 		
