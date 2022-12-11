@@ -89,10 +89,15 @@ public:
                 root->left = deletefunction(root->left , temp->data) ;  
             }
         }    
-        return root ;     
-         
-        
-        
+        return root ;        
+    }
+    void findmax(node* root)
+    {
+        while(root->right!=nullptr)
+        {
+            root = root->right ; 
+        }
+        return root ; 
     }
     ~bst()
     {
