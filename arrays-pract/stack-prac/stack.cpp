@@ -55,6 +55,7 @@ public:
         if (count <= 0)
         {
             cout<<"Stack Underflow"<<endl ; 
+            return ; 
         }
         int a  = 0 ;
         tail() ;
@@ -69,6 +70,7 @@ public:
         {
             
             cout<<"Top is empty"<<endl ; 
+            return ; 
         }
         tail() ; 
         cout<<"Top: "<<*(curr) <<endl ; 
