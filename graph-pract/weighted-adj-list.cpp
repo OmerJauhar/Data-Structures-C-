@@ -14,7 +14,7 @@ public:
         this->start_idx = 0 ; 
         this->end_idx = 0 ; 
         this->weight = 0 ; 
-    }
+    } 
 };
 
 class graph
