@@ -2,13 +2,13 @@
 #include<list>
 using namespace std ; 
 
-class dfsgraph
+class graph
 {
 private:
     int size ;
-    list<int>* holder ; 
+    list<int>* holder  ; 
 public:
-    dfsgraph(int n)
+    graph(int n)
     {
         this->size = n ; 
         holder = new list<int>[this->size] ; 
@@ -17,30 +17,30 @@ public:
     {
         holder[start_idx].push_back(end_idx) ; 
     }
-    void dfs()
+    void dfs(int )
     {
-        bool *searched = new bool[this->size] ; 
+        bool* visited = new bool[this->size] ; 
         for (int i = 0; i < this->size; i++)
         {
-            searched[i] = false ; 
+            visited[i] = false ; 
         }
+
         for (int i = 0; i < this->size; i++)
         {
-            if (!searched[i])
+            if(!visited[i])
             {
-                dfs_helper(i,searched) ; 
+                dfs_helper(i,visited) ; 
             }
-            
         }
         
-         
+        
     }
-    void dfs_helper(int n , bool array[])
+
+    void dfs_helper(int n , bool array[] )
     {
         array[n] = true ; 
-        cout<<n<<" " ; 
-        list<int> :: iterator  i ; 
-        for (i  = holder[n].begin(); i != holder[n].end(); i++)
+        list<int>::iterator i ; 
+        for ( i = holder[n].begin(); i !=holder[n].end(); i++)
         {
             if (array[*i] == false )
             {
@@ -49,12 +49,10 @@ public:
             
         }
         
-        
     }
-
 };
 
 int main()
 {
-    return 0 ; 
+    return 0; 
 }
