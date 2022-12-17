@@ -1,8 +1,6 @@
 // Binary Search Tree Implementation..  
 #include<iostream>
 
-int* arry = new int[100] ; 
-int meow = 0 ; 
 using namespace std;
     class node {
     public:
@@ -16,9 +14,6 @@ using namespace std;
    
 class BinarySearchTree{
     private:
-    //node class
-
-    //private data members and methods
     node* root;
     node* Insert( node* root, int val);
     node* Delete(node* root,int data);
@@ -67,11 +62,6 @@ int main (){
     cout<<"Post Order Print (left--Right--Root)"<<endl;
     tree1.PostOrderTraversal();
 
-    for (int i = 0; i < meow; i++)
-    {
-        cout<<*(arry + meow) ; 
-
-    }
     
     return 0;
 }
