@@ -54,8 +54,7 @@ public:
         //will pop element from the end of the array
         if (count <= 0)
         {
-            cout<<"Stack Underflow"<<endl ; 
-            return ; 
+            cout<<"Stack Underflow"<<endl ;  
         }
         int a  = 0 ;
         tail() ;

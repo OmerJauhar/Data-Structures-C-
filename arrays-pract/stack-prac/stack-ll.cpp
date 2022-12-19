@@ -1,109 +1,99 @@
 #include<iostream>
 using namespace std ; 
 
-
-class stack
-{
-
-private:
+class stackll ; 
 class node
 {
-public:
+private:
+    friend class stackll ; 
     int info ; 
-    node* next ; 
+    node* next ;
 
+public:
     node(int n)
     {
         this->info = n ; 
-        next  =  nullptr ; 
+        next = nullptr ; 
     }
+
 };
-    node* top ;
+
+class stackll
+{
+private:
     int counter ; 
-    int size ;
-    node* curr ;  
+    int size ; 
+    node* top ; 
+
 public:
-    stack()
+    stackll(int n)
     {
-        top = nullptr ;
-        this->counter = 0 ;  
-        this->size = 10 ; 
-        //by default the size of the stack will be 10 ;
-    }
-    stack(int n)
-    {
-        top = nullptr ; 
+        this->top = nullptr ; 
         this->counter = 0 ; 
         this->size = n ; 
     }
-    void push(int val )
+    ~stackll()
     {
-        if (counter >= size)
+        delete top ; 
+    }
+    void push(int key)
+    {
+        if (counter >= this->size)
         {
-            cout<<"Stack overflow"<<endl;
+            cout<<"Stack overflow"<<endl; 
             return ; 
         }
-        node* ptr = new node(val) ; 
-        curr = top ; 
-        top = ptr ; 
-        top->next = curr ; 
-        counter++ ; 
-        return ;         
+        node* temp = new node(key) ;
+        if (top==nullptr)
+        {
+            top = temp ; 
+        }
+        node* temp1 = top ; 
+        temp->next = temp1 ; 
+        top = temp ; 
+        this->counter ++ ; 
+        return ; 
     }
+
     void pop()
     {
-        if (counter <= 0)
+        if (this->counter <= 0)
         {
-            cout<<"Stack Underflow"<<endl ; 
+            cout<<"Stack underflow"<<endl ; 
             return ; 
         }
-        curr = top ; 
+        cout<<"POP element : "<<top->info<<endl ; 
         top = top->next ; 
-        counter-- ; 
-        // cout<<""<<curr->info<<endl ; 
-        
+        this->counter -- ; 
     }
+
     void peak()
     {
-        if (!counter <= size)
+        if (this->counter <=0 )
         {
-            cout<<"TOP: "<<top->info <<endl ; 
+            cout<<"Top is empty"<<endl ; 
         }
+        cout<<"Top"<<top->info <<endl ; 
+        return ; 
         
     }
 
 };
+
 int main()
 {
-    stack s1(10) ; //10 limit is given in the start
-    s1.push(12) ; 
-    s1.push(13) ; 
-    s1.push(11) ; 
-    s1.push(14) ; 
-    s1.push(10) ; 
-    s1.push(15) ; 
-    s1.push(18) ; 
-    s1.push(19) ; 
-    s1.push(51) ; 
-    s1.push(99) ; 
-    s1.push(22) ; //limit of 10 exceeded 
-    s1.peak() ;
+    stackll s1(5) ; 
+    s1.push(4234) ; 
+    s1.push(4234) ;
+    s1.push(4234) ;
+    s1.push(4234) ;
+    s1.push(4234) ;
     s1.pop() ;
-    s1.peak() ;
-    s1.pop() ; 
-    s1.peak() ;
-    s1.pop() ; 
-    s1.peak() ;  
-    s1.pop() ;
-    s1.peak() ;
-    s1.pop() ; 
-    s1.peak() ;
-    s1.pop() ; 
-    s1.peak() ;  
-    s1.pop() ;
-    s1.peak() ;
+    s1.pop() ;  
     s1.pop() ; 
     s1.pop() ; 
-  
+    s1.pop() ; 
+    s1.pop() ; 
+
     return 0 ; 
 }
