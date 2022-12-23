@@ -78,7 +78,7 @@ void DTBT:: insert(int value)
     meow = root ->left ; 
     while (true)
     {
-        if(meow->value < data)
+        if(meow->value < value )
         {
             node * ptr = new node() ; 
             ptr ->value = value ; 
@@ -99,7 +99,7 @@ void DTBT:: insert(int value)
             }
             
         }
-        if (meow->value > data)
+        if (meow->value > value )
         {
             node * ptr = new node() ; 
             ptr ->value = value ; 

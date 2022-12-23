@@ -20,6 +20,7 @@ class BinarySearchTree{
     void InOrderTraversal( node* root);
     void PreOrderTraversal( node* root);
     void PostOrderTraversal( node* root);
+    int functionmeow(node* root) ; 
     node* FindMax(node* root);
     public:
     BinarySearchTree(){
@@ -35,6 +36,10 @@ class BinarySearchTree{
    }
     void InOrderTraversal(){
         InOrderTraversal( this->root);
+    }
+    int FUNCTIONMEOW()
+    {
+       return  functionmeow(this->root) ; 
     }
     void PreOrderTraversal(){
         PreOrderTraversal( this->root);
@@ -61,9 +66,30 @@ int main (){
     cout<<"\n-----------------------"<<endl;
     cout<<"Post Order Print (left--Right--Root)"<<endl;
     tree1.PostOrderTraversal();
+    cout<<endl; 
+    cout<<tree1.FUNCTIONMEOW() ; 
 
     
     return 0;
+}
+int BinarySearchTree::functionmeow(node* root)
+{
+    int meow = 0   ; 
+    if (root==nullptr)
+    {
+        return 0 ; 
+    }
+    if (root->left!=nullptr && root->right == nullptr)
+    {
+        meow++ ;    
+        cout<<meow<<endl ;  
+    }
+    else if (root->left == nullptr && root->right !=nullptr)
+    {
+        meow++ ; 
+        cout<<meow<<endl ; 
+    }
+    return meow + functionmeow(root->left) + functionmeow(root->right) ;   
 }
 node* BinarySearchTree::Insert(node* r, int val ){
  if (r==NULL)
@@ -132,8 +158,8 @@ void BinarySearchTree::InOrderTraversal( node* r){
     InOrderTraversal(r->left);
     cout<<r->data<<"->" ; 
    //then print the data of node
-   *(arry + meow) = r->data;
-    meow ++ ; 
+//    *(arry + meow) = r->data;
+    // meow ++ ; 
   // now recur on right child
     InOrderTraversal(r->right);
 }
@@ -158,4 +184,5 @@ void BinarySearchTree::PostOrderTraversal( node* r){
     PostOrderTraversal(r->left);
     PostOrderTraversal(r->right);    
     cout << " "<< r->data << " -> ";
+    
 }
