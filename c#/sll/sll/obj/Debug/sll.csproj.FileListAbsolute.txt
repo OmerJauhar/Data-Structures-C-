@@ -1,0 +1,6 @@
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/bin/Debug/sll.exe
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/bin/Debug/sll.pdb
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/obj/Debug/sll.csproj.AssemblyReference.cache
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/obj/Debug/sll.csproj.CoreCompileInputs.cache
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/obj/Debug/sll.exe
+/home/omer/Desktop/Data-Structures-C-/c#/sll/sll/obj/Debug/sll.pdb
